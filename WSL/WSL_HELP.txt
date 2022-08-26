@@ -29,4 +29,22 @@ PowerShel{WINDOWS+R}: wsl --set-version <distro name> 2
 Обновление и модификация пакетов.
 Bash: sudo apt update && sudo apt upgrade
 
+Версия ядра.
+Bash: lsb_release -a
+
+Установка локали (если не установлена).
+Bash: sudo apt-get install locales
+
+Выбор доступных системе локалей.
+Bash: sudo dpkg-reconfigure locales
+en_US.UTF-8
+ru_RU.UTF-8
+
+Настройка русской локали.
+Bash: sudo update-locale LANG=ru_RU.UTF-8
+Перезагрузить консоль.
+
+Проверка локали.
+Bash: locale
+
 ***Настройка имени пользователя и пароля Linux***
