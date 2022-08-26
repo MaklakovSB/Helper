@@ -1,4 +1,4 @@
-Деинсталляция WSL.
+﻿Деинсталляция WSL.
 PowerShel(WINDOWS+R): Remove-WindowsFeature Microsoft-Windows-Subsystem-Linux
 
 Инсталляция WSL. Команда работает, только если WSL не установлена.
@@ -7,6 +7,7 @@ PowerShel{WINDOWS+R}: wsl --install
 Инсталлировать конкретный дистрибутивов.
 PowerShel{WINDOWS+R}: wsl --install -d <DistroName>
 Например: wsl --install -d Ubuntu-20.04
+Настройка имени пользователя и пароля.
 
 Просмотреть список доступных дистрибутивов.
 PowerShel{WINDOWS+R}: wsl --list --online
@@ -47,4 +48,31 @@ Bash: sudo update-locale LANG=ru_RU.UTF-8
 Проверка локали.
 Bash: locale
 
-***Настройка имени пользователя и пароля Linux***
+***Установка git***
+
+Установка git.
+Bash: sudo apt-get install git
+
+Обновление git до последней версии.
+Bash: sudo add-apt-repository ppa:git-core/ppa
+Bash: sudo apt update
+Bash: sudo apt install git
+
+Настройка файла конфигурации Git.
+Bash: git config --global user.name "User Name"
+Bash: git config --global user.email "youremail@domain.com"
+
+Настройка диспетчера учетных данных Git.
+
+Если установлен >GIT = версия 2.36.1
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+
+если версия версии < 2.36.1
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
+
+
+
+
+
+
+
