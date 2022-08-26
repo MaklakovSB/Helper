@@ -5,8 +5,28 @@ PowerShel(WINDOWS+R): Remove-WindowsFeature Microsoft-Windows-Subsystem-Linux
 PowerShel{WINDOWS+R}: wsl --install
 
 Инсталлировать конкретный дистрибутивов.
-PowerShel{WINDOWS+R}: install -d <DistroName>
-
+PowerShel{WINDOWS+R}: wsl --install -d <DistroName>
+Например: wsl --install -d Ubuntu-20.04
 
 Просмотреть список доступных дистрибутивов.
 PowerShel{WINDOWS+R}: wsl --list --online
+или
+PowerShel{WINDOWS+R}:wsl -l -o
+
+Получить список установленных дистрибутивов.
+PowerShel{WINDOWS+R}: wsl -l -v
+Bash: wsl.exe -l -v
+
+Задать значение WSL 1 или WSL 2 для запуска версии распределения по умолчанию <Version#> = 1 или 2.
+PowerShel{WINDOWS+R}: wsl --set-default-version <Version#>
+
+Перейти с версии WSL 2 на WSL 1 или обновить ранее установленные дистрибутивы Linux с версии WSL 1 до WSL 2.
+PowerShel{WINDOWS+R}: wsl --set-version <distro name> 2
+
+
+***Первое после установки - обновление***
+
+Обновление и модификация пакетов.
+Bash: sudo apt update && sudo apt upgrade
+
+***Настройка имени пользователя и пароля Linux***
