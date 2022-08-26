@@ -1,0 +1,12 @@
+Деинсталляция WSL.
+PowerShel(WINDOWS+R): Remove-WindowsFeature Microsoft-Windows-Subsystem-Linux
+
+Инсталляция WSL. Команда работает, только если WSL не установлена.
+PowerShel{WINDOWS+R}: wsl --install
+
+Инсталлировать конкретный дистрибутивов.
+PowerShel{WINDOWS+R}: install -d <DistroName>
+
+
+Просмотреть список доступных дистрибутивов.
+PowerShel{WINDOWS+R}: wsl --list --online
