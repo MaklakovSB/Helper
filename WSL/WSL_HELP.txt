@@ -109,3 +109,5 @@ git config --global core.autocrlf input
 git config --global core.autocrlf false
 
 Наконец, вам может понадобиться снова клонировать репозиторий, чтобы эти настройки вступили в силу.
+
+ssh-keygen -t ed25519 -C "maklakovsb@yandex,ru"
