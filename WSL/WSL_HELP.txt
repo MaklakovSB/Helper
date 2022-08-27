@@ -111,3 +111,9 @@ git config --global core.autocrlf false
 Наконец, вам может понадобиться снова клонировать репозиторий, чтобы эти настройки вступили в силу.
 
 ssh-keygen -t ed25519 -C "maklakovsb@yandex,ru"
+
+eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/id_ed25519
+
+ssh -T git@github.com
