@@ -110,10 +110,40 @@ git config --global core.autocrlf false
 
 Наконец, вам может понадобиться снова клонировать репозиторий, чтобы эти настройки вступили в силу.
 
-ssh-keygen -t ed25519 -C "maklakovsb@yandex,ru"
+Генерация пары ключей, обязательно с дополнительной парольной защитой и путём поумолчанию.
+ssh-keygen -t ed25519 -C "maklakovsb@yandex.ru"
 
+1) Запуск службы менеджера ключей.
 eval "$(ssh-agent -s)"
 
+2) Добавление ключа в службой менеджера ключей в хранилище.
 ssh-add ~/.ssh/id_ed25519
 
+3) Подключение к гитхаб.
 ssh -T git@github.com
+
+Последние три команды выполняют запуск агента, добавление закрытого ключа и соединение с гитхаб.
+Для автоматизации этих действий необходимо добавить в файл ~/.profileили ~/.bashrc следующие строки:
+
+env=~/.ssh/agent.env
+
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ; }
+
+agent_load_env
+
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+
+unset env 
+
